@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DTO\CreateSupportDTO;
-use App\DTO\UpdateSupportDTO;
+use App\DTO\Supports\CreateSupportDTO;
+use App\DTO\Supports\UpdateSupportDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Support;
@@ -20,7 +20,7 @@ class SupportController extends Controller
     {
         $supports = $this->service->paginate(
             page: $request->get('page', 1),
-            totalPerPage: $request->get('per_page', 2),
+            totalPerPage: $request->get('per_page', 1),
             filter: $request->filter
         );
 
@@ -46,7 +46,7 @@ class SupportController extends Controller
     public function store(StoreUpdateSupport $request, Support $support)
     {
         $this->service->new(
-            CreateSupportDTO::makeFromRequest(($request))
+            CreateSupportDTO::makeFromRequest($request)
         );
 
         return redirect()->route('supports.index');

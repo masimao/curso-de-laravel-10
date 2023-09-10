@@ -63,6 +63,7 @@ Gere a key do projeto Laravel
 php artisan key:generate
 ```
 
+Curso concluído com sucesso!
 
 Acesse o projeto
 [http://localhost:8989](http://localhost:8989)
